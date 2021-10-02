@@ -1,0 +1,191 @@
+<html><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Snippet - Bootsnipp.com</title>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="boostrap-table-pagination.js"></script>
+		
+	<body>
+		<div class="row table-responsive">		
+			<div class="col-md-4 col-md-offset-7"> <!-- Change the table size and position horizontally-->
+				<div class="panel panel-default" >
+					<div class="panel-body">
+						<div class="pull-left">
+							<h2>News</h2>
+						</div>
+						<div class="pull-right">
+							<div class="btn-group">
+								<button type="button" class="btn btn-success btn-filter" data-target="recent">Recent</button>
+								<button type="button" class="btn btn-warning btn-filter" data-target="old">Old</button>
+								<button type="button" class="btn btn-default btn-filter" data-target="all">All</button>
+							</div>
+						</div>
+						<div class="table-container">
+							<table class="table table-filter">
+								<tbody id="myTable">
+									<tr data-status="recent" class="selected" style="display: table-row;">																					
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 1, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right recent">(Recent)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="old" style="display: table-row;">
+										
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 2, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right old">(Old)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									
+									<tr data-status="recent" style="display: table-row;">
+										
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 3, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right recent">(Recent)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									
+									<tr data-status="old" style="display: table-row;">										
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 4, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right old">(Old)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									
+									<tr data-status="old">										
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 5, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right old">(Old)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="old">
+										
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 6, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right old">(Old)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="old" >
+										
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 7, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right old">(Old)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+							 
+						<div class="col-md-12 text-center">
+						  <ul class="pagination pagination-lg pager" id="myPager">
+								<li>
+									<a href="#" class="prev_link" style="display: none;">«</a>
+								</li>
+								<li class="active">
+									<a href="#" class="page_link active">1</a>
+								</li>
+								<li>
+									<a href="#" class="page_link">2</a>
+								</li>
+								<li>
+									<a href="#" class="page_link">3</a>
+								</li>																
+								<li>
+									<a href="#" class="next_link">»</a>
+								</li>
+						</ul>
+						</div>
+						<!--End Pagination div-->
+					</div>
+				</div>
+			</div>				
+		</div>				       
+	</body>
+</html>
+
+<!-- 
+https://bootsnipp.com/snippets/featured/easy-table-filter
+https://www.bootply.com/lxa0FF9yhw
+-->
+

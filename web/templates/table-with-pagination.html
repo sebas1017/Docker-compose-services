@@ -1,0 +1,166 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Records Profiles</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">		
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		
+		<style>
+			.table-responsive {height:100%;}
+		</style>
+		
+		<script type="text/javascript">
+			$.fn.pageMe = function(opts){
+			var $this = this,
+				defaults = {
+					perPage: 5,
+					showPrevNext: false,
+					hidePageNumbers: false
+				},
+				settings = $.extend(defaults, opts);
+			
+				var listElement = $this;
+				var perPage = settings.perPage; 
+				var children = listElement.children();
+				var pager = $('.pager');
+				
+				if (typeof settings.childSelector!="undefined") {
+					children = listElement.find(settings.childSelector);
+				}
+				
+				if (typeof settings.pagerSelector!="undefined") {
+					pager = $(settings.pagerSelector);
+				}
+				
+				var numItems = children.size();
+				var numPages = Math.ceil(numItems/perPage);
+
+				pager.data("curr",0);
+				
+				if (settings.showPrevNext){
+					$('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+				}
+				
+				var curr = 0;
+				while(numPages > curr && (settings.hidePageNumbers==false)){
+					$('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
+					curr++;
+				}
+				
+				if (settings.showPrevNext){
+					$('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
+				}
+				
+				pager.find('.page_link:first').addClass('active');
+				pager.find('.prev_link').hide();
+				if (numPages<=1) {
+					pager.find('.next_link').hide();
+				}
+				  pager.children().eq(1).addClass("active");
+				
+				children.hide();
+				children.slice(0, perPage).show();
+				
+				pager.find('li .page_link').click(function(){
+					var clickedPage = $(this).html().valueOf()-1;
+					goTo(clickedPage,perPage);
+					return false;
+				});
+				pager.find('li .prev_link').click(function(){
+					previous();
+					return false;
+				});
+				pager.find('li .next_link').click(function(){
+					next();
+					return false;
+				});
+				
+				function previous(){
+					var goToPage = parseInt(pager.data("curr")) - 1;
+					goTo(goToPage);
+				}
+				 
+				function next(){
+					goToPage = parseInt(pager.data("curr")) + 1;
+					goTo(goToPage);
+				}
+				
+				function goTo(page){
+					var startAt = page * perPage,
+						endOn = startAt + perPage;
+					
+					children.css('display','none').slice(startAt, endOn).show();
+					
+					if (page>=1) {
+						pager.find('.prev_link').show();
+					}
+					else {
+						pager.find('.prev_link').hide();
+					}
+					
+					if (page<(numPages-1)) {
+						pager.find('.next_link').show();
+					}
+					else {
+						pager.find('.next_link').hide();
+					}
+					
+					pager.data("curr",page);
+					pager.children().removeClass("active");
+					pager.children().eq(page+1).addClass("active");
+				
+				}
+			};
+
+			$(document).ready(function(){				
+			  $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:4});				
+			});
+		</script>
+		
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+			  <div class="table-responsive">
+				<table class="table table-hover">
+				  <thead>
+					<tr>
+					  <th>Job</th>
+					  <th>Company</th>
+					  <th>SSN</th>
+					  <th>Residence</th>
+					  <th>Blood group</th>
+					</tr>
+				  </thead>
+				  <tbody id="myTable">
+					{% for Customer in profiles %}  
+					<tr>  
+					 <td>{{ Customer.job }}</td>  
+					 <td>{{ Customer.company }}</td>  
+					 <td>{{ Customer.ssn }}</td>  
+					 <td>{{ Customer.residence }}</td>  
+					 <td>{{ Customer.blood_group }}</td>  
+					</tr>  
+				   {% endfor %} 
+				  </tbody>
+				</table>   
+				<li> <a href="/admin"class="btn btn-success">Modulo de Admin</a></li>
+			 
+				<div class="col-md-12 text-center">
+					<ul class="pagination pagination-lg pager" id="myPager">
+					  </ul>
+				  </div>
+			  </div>
+		
+
+
+			</div>
+		</div>							
+	</body>
+</html>
+
+
+<!-- https://www.bootply.com/lxa0FF9yhw-->

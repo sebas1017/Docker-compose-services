@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  database-service:
+    image: "postgres" # use latest official postgres version
+    env_file:
+      - ./database_postgresql/database.env # configurando postgres
+    volumes:
+      - ./database_postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql # persistir la informacion
+      - database-data:/var/lib/postgresql/data/
+    ports:
+      - "532:5432"
+    networks:
+      - app-tier
+    container_name: postgresql_service
+
+
+  faker-service:
+    restart: always
+    build: ./faker
+    volumes:
+     - ./faker:/usr/src/app
+    ports:
+     - 5000:3000
+    networks:
+     - app-tier
+    depends_on:
+     - database-service
+    container_name: servicio_datos_falsos
+
+  api-service:
+    restart: always
+    build: ./api
+    volumes:
+     - ./api:/usr/src/app
+    ports:
+     - 5001:81
+    depends_on: 
+     - faker-service
+    networks:
+     - app-tier
+    container_name: servicio_api_rest
+  
+         
+  web-service:
+    restart: always
+    build: ./web
+    ports:
+      - 5002:82
+    networks:
+      - app-tier
+    container_name: servicio_web_app
+  
+    
+networks:
+  app-tier:
+    driver: bridge     
+volumes:
+  database-data:
+
