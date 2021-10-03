@@ -1,4 +1,5 @@
 
+ ![alt text](https://github.com/sebas1017/flask-faker-app/blob/master/DOCKER.png?raw=true)
  ![alt text](https://github.com/sebas1017/flask-faker-app/blob/master/REQUERIMIENTOS.png?raw=true)
 
 Para correr el proyecto simplemente debe clonarlo en su maquina y en la raiz escribir
